@@ -1,0 +1,14 @@
+name: Do dummy work
+description: Performs some dummy work.
+inputs:
+- {name: Input 1, type: Wocloud Bucket Path, description: 'Data for Input 1'}
+outputs:
+- {name: Output 1, description: 'Output 1 data'}
+implementation:
+  container:
+    image: registry.cn-beijing.aliyuncs.com/kubeflow-unicom/download-mclz-datasetsha256:6fc9b6ba8847b3ef6cdd03036a7649dffd1bf6c61fd7a4c1f55ef15d46b06324
+    command: [
+      python3, /pipelines/component/src/download_dataset.py,
+      --input-path,  {inputPath:  Input 1},
+      --output1-path, {outputPath: Output 1},
+    ]
